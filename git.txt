@@ -1,0 +1,12 @@
+git init
+    초기화
+git add
+    파일 추가
+    add 뒤에 ' .'은 모든 파일
+    add 뒤에 '이름.확장자'
+git commit -m "히스토리 이름"
+    히스토리 만들기
+git remote -v
+    주소값 확인
+git push -u origin main
+    푸쉬
