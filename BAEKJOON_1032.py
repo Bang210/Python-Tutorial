@@ -19,3 +19,5 @@ for j in range(n-1) :
 
 for m in range(len(common)) :
     print(common[m], end='')
+
+# 정답
