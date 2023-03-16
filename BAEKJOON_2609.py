@@ -1,3 +1,6 @@
+# 최대공약수와 최소공배수를 구하는 문제
+# 최소공배수를 구하는 과정에서 비효율이 발생한 것으로 보임.
+
 import sys
 input = sys.stdin.readline
 
@@ -5,13 +8,12 @@ a, b = map(int, input().split())
 
 for i in range(min(a, b), 0, -1) :
     if a % i == 0 and b % i == 0 :
-        maxi = i
+        greatest_common = i
         break
 
-for j in range(max(a, b), a * b + 1) :
-    if j % a == 0 and j % b == 0 :
-        mini = j
-        break
+least_common = int(a * b / greatest_common)
 
-print(maxi)
-print(mini)
+print(greatest_common)
+print(least_common)
+
+# 시간초과
