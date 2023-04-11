@@ -18,4 +18,4 @@ for i in range(startingNumber, num) :
 
 print(creator)
 
-# 정답.
+# Value Error.
