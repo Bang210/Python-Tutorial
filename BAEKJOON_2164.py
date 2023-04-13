@@ -3,12 +3,12 @@
 import sys
 input = sys.stdin.readline
 
-card = list(i + 1 for i in range(int(input())))
+card = list(i for i in range(int(input()), 0, -1))
 while len(card) > 1 :
-    del card[0]
-    card.append(card[0])
-    del card[0]
+   card.pop()
+   card.insert(0, card.pop())
 
 print(card[0])
 
-# 시간초과.
+# pop을 이용해 압축을 시도했으나 시간초과.
+# 요소를 하나씩 제거하는 과정에서 긴 시간이 소요된 것으로 보임.
