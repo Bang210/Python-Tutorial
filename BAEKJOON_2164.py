@@ -2,18 +2,16 @@
 
 import sys
 input = sys.stdin.readline
-num = int(input())
+from collections import deque
 
-if num > 1 :
-    card = list(i+ 2 for i in range(0, num, 2))       #첫 번째 사이클 생략
-    while len(card) > 1 :
-        for j in range(0, len(card), 2) :
-            card[j] = 0
-        card = list(set(card))
-        card.remove(0)
-else :
-    card = [1]
+card = deque(i + 1 for i in range(int(input())))
+
+while len(card) > 1 :
+	card.popleft()
+	card.append(card.popleft())
+	
 print(card[0])
 
-# pop을 이용해 압축을 시도했으나 시간초과.
-# 요소를 하나씩 제거하는 과정에서 긴 시간이 소요된 것으로 보임.
+#문제에 대한 접근이 잘못된 것으로 보임.
+#처음의 방법으로 돌아가되, deque 객체를 이용하여 시간단축.
+#정답.
