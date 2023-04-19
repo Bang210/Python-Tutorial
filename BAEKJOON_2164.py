@@ -2,12 +2,17 @@
 
 import sys
 input = sys.stdin.readline
+num = int(input())
 
-card = list(i for i in range(int(input()), 0, -1))
-while len(card) > 1 :
-   card.pop()
-   card.insert(0, card.pop())
-
+if num > 1 :
+    card = list(i+ 2 for i in range(0, num, 2))       #첫 번째 사이클 생략
+    while len(card) > 1 :
+        for j in range(0, len(card), 2) :
+            card[j] = 0
+        card = list(set(card))
+        card.remove(0)
+else :
+    card = [1]
 print(card[0])
 
 # pop을 이용해 압축을 시도했으나 시간초과.
