@@ -4,10 +4,9 @@ import sys
 input = sys.stdin.readline
     
 universe_num = int(input())
-universe = list(map(int, input().split()))
+universe = sorted(list(map(int, input().split())))
 test_num = int(input())
 test = list(map(int, input().split()))
-universe.sort()
 
 for i in range(test_num) :
     arr = universe.copy()
@@ -26,4 +25,4 @@ for i in range(test_num) :
             arr = arr[ : middle_num]
     print(check)
 
-# 미해결
+# 시간초과. arr리스트를 슬라이싱하는 과정에서 시간이 초과된 것으로 보임.
