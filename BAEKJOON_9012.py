@@ -4,7 +4,6 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-result = list()
 
 for i in range(n) :
     left = 0
@@ -23,3 +22,5 @@ for i in range(n) :
     else :
         check = 'NO'
     print(check)
+
+# 정답.
