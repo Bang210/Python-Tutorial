@@ -29,3 +29,5 @@ for i in range(test_num) :
     result.append(count)
 for j in range(test_num) :
     print(result[j], end = ' ')
+
+# 시간초과.
