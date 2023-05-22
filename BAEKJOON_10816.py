@@ -3,31 +3,21 @@
 import sys
 input = sys.stdin.readline
 
-num = int(input())
-card = list(map(int, input().split()))
-card_set = sorted(list(set(card)))
+own_num = int(input())
+own_list = list(map(int, input().split()))
 test_num = int(input())
-test = list(map(int, input().split()))
-card_num = len(card_set)
-result = list()
+test_list = list(map(int, input().split()))
+test_dict = {}
 
 for i in range(test_num) :
-    first = 0
-    end = card_num - 1
-    count = 0
-    while True :
-        middle = (first + end) // 2
-        if test[i] < card_set[first] or test[i] > card_set[end] :
-            break
-        elif test[i] == card_set[middle] :
-            count = card.count(test[i])
-            break
-        elif test[i] < card_set[middle] :
-            end = middle
-        else :
-            first = middle + 1
-    result.append(count)
-for j in range(test_num) :
-    print(result[j], end = ' ')
+    test_dict[test_list[i]] = 0
 
-# 시간초과.
+for j in range(own_num) :
+    if own_list[j] in test_dict :
+        test_dict[own_list[j]] += 1
+
+for k in range(test_num) :
+    print(test_dict[test_list[k]], end=' ')
+
+# 이진탐색이 아닌 딕셔너리를 이용하는 방법으로 접근.
+# 정답.
