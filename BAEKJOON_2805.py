@@ -1,32 +1,26 @@
 # 각각의 길이가 주어지는 N그루의 나무에 대해, 한 번에 h만큼의 높이에서 잘랐을 때 M만큼의 나무를 얻기 위한 h의 최댓값을 구하는 문제
+# 완전탐색 방법으로 실패하고 딕셔너리를 이용해 시간복잡도를 줄여보려 했으나 실패
+# 이분탐색을 이용해 재도전
 
 import sys
 input = sys.stdin.readline
 
 num_trees, required = map(int, input().split())
 trees = list(map(int, input().split()))
-trees.sort(reverse=True)
-trees_set = list(set(trees))
-trees_set.sort(reverse=True)
-trees_dic = dict()
-h = trees[0]
-cut = 0
+start = 0
+end = max(trees)
 
-for tree in trees_set :
-    trees_dic[tree] = 0
-
-for tree in trees :
-    trees_dic[tree] += 1
-
-while cut < required :
+while start <= end :
+    h = (start + end) // 2
     cut = 0
-    h -= 1
-    for tree in trees_set :
+    for tree in trees :
         if tree > h :
-            cut += (tree - h) * trees_dic[tree]
-        else :
-            break
+            cut += tree - h
+    if cut < required :
+        end = h - 1
+    elif cut >= required :
+        start = h + 1
 
-print(h)
+print(end)
 
-# 시간초과.
+# 정답
