@@ -19,3 +19,5 @@ for i in range(test_case) :
     for element in arr :
         ans = ans * (element + 1)
     print(ans - 1)
+
+# 정답
