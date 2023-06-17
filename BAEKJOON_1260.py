@@ -38,3 +38,6 @@ def bfs(s) :
 dfs(start)
 print()
 bfs(start)
+
+# 그래프 탐색법(dfs, bfs)을 학습함.
+# 정답.
