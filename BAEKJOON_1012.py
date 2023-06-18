@@ -4,18 +4,38 @@
 
 # 각 테스트 케이스에 대해 필요한 최소의 배추흰지렁이 마리 수를 출력한다.
 
+# dfs를 이용하여 해결
+
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(10 ** 8)
 
-test_case = int(input())
+def add_search(yy, xx) :
+    visit[yy][xx] = 1
+    if xx < width - 1 and cabbages[yy][xx + 1] == 1 and visit[yy][xx + 1] == 0 :
+        add_search(yy, xx + 1)
+    if yy < length - 1 and cabbages[yy + 1][xx] == 1 and visit[yy + 1][xx] == 0 :
+        add_search(yy + 1, xx)
+    if xx > 0 and cabbages[yy][xx - 1] == 1 and visit[yy][xx - 1] == 0 :
+        add_search(yy, xx - 1)
+    if yy > 0 and cabbages[yy - 1][xx] == 1 and visit[yy - 1][xx] == 0 :
+        add_search(yy - 1, xx)
 
-for i in range(test_case) :
+num_tests = int(input())
+
+for i in range(num_tests) :
     width, length, num = map(int, input().split())
-    cabbages = list()
+    cabbages = [[0] * width for _ in range(length)]
+    visit = [[0] * width for __ in range(length)]
+    cnt = 0
     for j in range(num) :
-        x, y = map(int, input().split())
-        cabbages.append((x, y,))
-    cabbages.sort()
-    worm = cabbages.copy()
-    
-    
+        a, b = map(int, input().split())
+        cabbages[b][a] = 1
+    for y in range(length) :
+        for x in range(width) :
+            if (cabbages[y][x] == 1) and (visit[y][x] == 0) :
+                cnt += 1
+                add_search(y, x)
+    print(cnt)
+
+# 정답
