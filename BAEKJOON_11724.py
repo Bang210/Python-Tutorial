@@ -1,4 +1,4 @@
-# 노드와
+# 노드와 엣지의 개수, 연결이 주어졌을 때 연결요소의 개수숟
 
 import sys
 sys.setrecursionlimit(10 ** 8)
